@@ -1,0 +1,29 @@
+﻿@model Blog.Web.Models.Domain.BlogPost
+
+@{
+    ViewData["Title"] = "Delete Blog Post";
+}
+
+<div class="container mt-4">
+    <h1 class="text-danger">Delete Blog Post</h1>
+    <p>Are you sure you want to delete the following blog post?</p>
+
+    <dl class="row">
+        <dt class="col-sm-3">Heading</dt>
+        <dd class="col-sm-9">@Model.Heading</dd>
+
+        <dt class="col-sm-3">Page Title</dt>
+        <dd class="col-sm-9">@Model.PageTitle</dd>
+
+        <dt class="col-sm-3">Short Description</dt>
+        <dd class="col-sm-9">@Model.ShortDescription</dd>
+
+        <dt class="col-sm-3">Author</dt>
+        <dd class="col-sm-9">@Model.Author</dd>
+    </dl>
+
+    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

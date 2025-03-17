@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Blog.Web.Models.Domain.BlogPost>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+<div class="container">
+    <h1>Welcome to My Blog</h1>
+    <p>Your go-to place for interesting blog posts.</p>
+
+    <h2>Latest Posts</h2>
+    <div class="row">
+        @foreach (var post in Model.Take(3)) // Show latest 3 posts
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    @* <img src="@post.FeaturedImage" alt="Featured Image" class="img-fluid" /> *@
+                    <div class="card-body">
+                        <h5 class="card-title">@post.Heading</h5>
+                        <p class="card-text">@post.ShortDescription</p>
+                       @*  <a href="@Url.Action("Details", "Home", new { id = post.Id })" class="btn btn-primary">Read More</a> *@
+                        @* <a href="@Url.Action("Details", "Home", new { id = post.Id })" class="btn btn-primary">Read More</a> *@
+                        <a href="@Url.Action("Details", "Home", new { id = post.Id.ToString() })" class="btn btn-primary">Read More</a>
+
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

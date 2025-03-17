@@ -1,0 +1,20 @@
+﻿@model Blog.Web.Models.Domain.BlogPost
+@{
+    ViewData["Title"] = "Blog Post Details";
+}
+<div class="container">
+    <h1>@Model.Heading</h1>
+    <p><strong>Author:</strong> @Model.Author</p>
+    <p><strong>Published Date:</strong> @Model.PublishedDate.ToShortDateString()</p>
+    @* <img src="@Model.FeaturedImage" class="img-fluid" alt="Featured Image"> *@
+    @* <p><strong>Content:</strong></p> *@
+    <div>
+        <p>@Model.Content</p>
+    </div>
+
+
+    <a href="@Url.Action("Index", "AdminBlogPost")" class="btn btn-secondary">Back to Blog Posts</a>
+
+
+
+</div>

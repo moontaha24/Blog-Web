@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Blog.Web.Models.Domain.BlogPost>
+@{
+    ViewData["Title"] = "Manage Blog Posts";
+}
+
+<div class="container">
+    <h1>All Blog Posts</h1>
+
+    <!-- Search Form -->
+    <form method="get" action="@Url.Action("Index", "AdminBlogPost")" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="searchTerm" value="@ViewData["SearchTerm"]" class="form-control" placeholder="Search blog posts..." />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <!-- Sort Options -->
+    <div class="mb-4">
+        <a href="?sortBy=Title" class="btn btn-outline-primary">Sort by Title</a>
+        <a href="?sortBy=Date" class="btn btn-outline-primary">Sort by Date</a>
+        <a href="?sortBy=Author" class="btn btn-outline-primary">Sort by Author</a>
+    </div>
+
+    <!-- Table -->
+    <table class="table table-striped table-with-padding">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Heading</td>
+                    <td>@post.Author</td>
+                    <td>@post.PublishedDate.ToShortDateString()</td>
+                    <td>
+                        <a href="@Url.Action("AdminDetails", "AdminBlogPost", new { id = post.Id })" class="btn btn-info">Details</a>
+                        <a href="@Url.Action("Edit", "AdminBlogPost", new { id = post.Id })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", "AdminBlogPost", new { id = post.Id })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?page=@i&sortBy=@ViewBag.SortBy&searchTerm=@ViewData["SearchTerm"]">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

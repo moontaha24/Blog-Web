@@ -1,0 +1,48 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+    padding: 20px;
+    margin: 10px auto;  Center the container and add some margin around it 
+}
+.table-with-padding {
+    width: 80%;
+    margin: 30px auto; /* Adds 30px space around the table */
+}
+
+.nav-item.active .nav-link {
+    color: blue; /* or whatever color you want */
+    
+}
+
+.navbar-nav{
+
+    padding-left: 40px;
+}
+
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 90px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 4rem;
+}
+
